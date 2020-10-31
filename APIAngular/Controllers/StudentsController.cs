@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading;
 using System.Web.Http;
+using System.Security.Claims;
 
 namespace APIAngular.Controllers
 {
@@ -20,6 +21,7 @@ namespace APIAngular.Controllers
 
         [Route("GetStudents")]
         [HttpGet]
+        [Authorize]
         public IHttpActionResult GetStudents()
         {
             Thread.Sleep(2000);
@@ -31,6 +33,7 @@ namespace APIAngular.Controllers
 
         [Route("GetStudent/{id}")]
         [HttpGet]
+        [Authorize]
         public IHttpActionResult GetStudentDetails(int id)
         {
             Thread.Sleep(2000);
@@ -41,6 +44,7 @@ namespace APIAngular.Controllers
 
         [Route("AddStudent")]
         [HttpPost]
+        [Authorize]
         public IHttpActionResult AddStudent([FromBody]Student student)
         {
             DB.Students.Add(student);
@@ -50,6 +54,7 @@ namespace APIAngular.Controllers
 
         [Route("UpdateStudent")]
         [HttpPut]
+        [Authorize]
         public IHttpActionResult UpdateStudent([FromBody]Student student)
         {
             var std = DB.Students.FirstOrDefault(m => m.StudentId == student.StudentId);
@@ -70,6 +75,7 @@ namespace APIAngular.Controllers
 
         [Route("DeleteStudent/{id}")]
         [HttpDelete]
+        [Authorize]
         public IHttpActionResult DeleteStudent(int id)
         {
             var std = DB.Students.FirstOrDefault(m => m.StudentId == id);

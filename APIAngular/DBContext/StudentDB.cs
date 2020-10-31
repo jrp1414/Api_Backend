@@ -14,5 +14,7 @@ namespace APIAngular.DBContext
         public DbSet<Student> Students { get; set; }
 
         public DbSet<Address> Addresses { get; set; }
+
+        public DbSet<User> Users { get; set; }
     }
 }

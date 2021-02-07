@@ -24,8 +24,8 @@ namespace APIAngular
                         ValidateIssuer = true,
                         ValidateAudience = true,
                         ValidateIssuerSigningKey = true,
-                        ValidIssuer = "https://localhost:44319/", //some string, normally web url,  
-                        ValidAudience = "https://localhost:44319/",
+                        ValidIssuer = "http://localhost:44319/", //some string, normally web url,  
+                        ValidAudience = "http://localhost:44319/",
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("my_secret_key_12345"))
                     }
                 });

@@ -21,10 +21,9 @@ namespace APIAngular.Controllers
 
         [Route("GetStudents")]
         [HttpGet]
-        [Authorize]
         public IHttpActionResult GetStudents()
         {
-            Thread.Sleep(2000);
+            //Thread.Sleep(4000);
             //return Ok(DB.Students.Join(DB.Addresses, m => m.AddressId, n => n.AddressId, (m, n) => new { Student = m, Address = n }).ToList());
             var data = DB.Students.ToList();
             return Ok(data);
@@ -33,10 +32,9 @@ namespace APIAngular.Controllers
 
         [Route("GetStudent/{id}")]
         [HttpGet]
-        [Authorize]
         public IHttpActionResult GetStudentDetails(int id)
         {
-            Thread.Sleep(2000);
+            //Thread.Sleep(2000);
             //return Ok(DB.Students.Join(DB.Addresses, m => m.AddressId, n => n.AddressId, (m, n) => new { Student = m, Address = n }).ToList());
             var data = DB.Students.FirstOrDefault(m => m.StudentId == id);
             return Ok(data);
@@ -44,7 +42,6 @@ namespace APIAngular.Controllers
 
         [Route("AddStudent")]
         [HttpPost]
-        [Authorize]
         public IHttpActionResult AddStudent([FromBody]Student student)
         {
             DB.Students.Add(student);
@@ -54,7 +51,6 @@ namespace APIAngular.Controllers
 
         [Route("UpdateStudent")]
         [HttpPut]
-        [Authorize]
         public IHttpActionResult UpdateStudent([FromBody]Student student)
         {
             var std = DB.Students.FirstOrDefault(m => m.StudentId == student.StudentId);
@@ -75,7 +71,6 @@ namespace APIAngular.Controllers
 
         [Route("DeleteStudent/{id}")]
         [HttpDelete]
-        [Authorize]
         public IHttpActionResult DeleteStudent(int id)
         {
             var std = DB.Students.FirstOrDefault(m => m.StudentId == id);
